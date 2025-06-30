@@ -1,12 +1,21 @@
-// product.ts
 import type { BaseEntity, PaginationParams } from './common';
 
-export interface Product extends BaseEntity {
+export interface ProductListItem extends BaseEntity {
+  title: string;
+  price: number;
+  image: string;
+  manufacturer: string;
+  genres: string[];
+  averageRating?: number;
+  totalReviews?: number;
+}
+
+export interface ProductDetail extends BaseEntity {
   title: string;
   price: number;
   stock: number;
   description: string;
-  mainImageUrl: string;
+  image: string;
   detailImageUrls: string[];
   manufacturer: string;
   genres: string[];
@@ -24,6 +33,4 @@ export interface ProductSearchParams extends PaginationParams {
   genres?: string[];
   manufacturer?: string;
   recommendedAge?: string;
-  minPrice?: number;
-  maxPrice?: number;
 }

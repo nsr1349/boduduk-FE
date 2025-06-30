@@ -5,6 +5,7 @@ export interface User extends BaseEntity {
   username: string;
   profileImage?: string;
   role: 'user' | 'admin';
+  address: string;
   isEmailVerified: boolean;
   isActive: boolean;
   totalOrders: number;
