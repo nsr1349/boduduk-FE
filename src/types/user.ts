@@ -2,7 +2,7 @@ import type { BaseEntity } from './common';
 
 export interface User extends BaseEntity {
   email: string;
-  username: string;
+  nickName: string;
   profileImage?: string;
   role: 'user' | 'admin';
   address: string;
