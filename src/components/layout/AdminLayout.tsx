@@ -1,11 +1,7 @@
-import React from 'react';
+import { Outlet } from 'react-router';
 
-interface AdminLayoutProps {
-  children: React.ReactNode;
-}
-
-const AdminLayout = ({ children }: AdminLayoutProps) => {
-  return <div>AdminLayout{children}</div>;
+const AdminLayout = () => {
+  return <div>AdminLayout<Outlet/></div>;
 };
 
 export default AdminLayout;

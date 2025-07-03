@@ -1,11 +1,7 @@
-import React from 'react';
+import { Outlet } from 'react-router';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => {
-  return <div>Layout{children}</div>;
+const Layout = () => {
+  return <div>Layout<Outlet/></div>;
 };
 
 export default Layout;
