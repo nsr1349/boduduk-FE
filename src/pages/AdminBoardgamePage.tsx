@@ -1,6 +1,6 @@
 const AdminBoardGamePage = () => {
   return (
-    <div>AdminBoardGamePage</div>
+    <div>AdminBoardGamePage!</div>
   )
 }
 

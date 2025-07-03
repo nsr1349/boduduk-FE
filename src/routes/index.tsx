@@ -1,6 +1,17 @@
 import { Routes, Route, BrowserRouter, Outlet, Navigate } from 'react-router';
 import AdminLayout from '../components/layout/AdminLayout';
 import Layout from '../components/layout/Layout';
+import HomePage from '../pages/HomePage';
+import BoardGameListPage from '../pages/BoardGameListPage';
+import BoardGameDetailPage from '../pages/BoardGameDetailPage';
+import LoginPage from '../pages/LoginPage';
+import SignInPage from '../pages/SignInPage';
+import CartPage from '../pages/CartPage';
+import MyPage from '../pages/MyPage';
+import AdminBoardGamePage from '../pages/AdminBoardGamePage';
+import AdminOrderPage from '../pages/AdminOrderPage';
+import AdminUserPage from '../pages/AdminUserPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 const isAuthenticated = (): boolean => {
   const token = localStorage.getItem('authToken');
@@ -34,34 +45,27 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout/>} path='/'>
-                  {/* 누구나 접근 가능한 Public 라우트 */}
-                  {/* <Route path="/" element={<HomePage />} /> */}
-                  {/* <Route path="/boardgame" element={<BoardgameListPage />} /> */}
-                  {/* <Route path="/boardgame/detail" element={<BoardgameDetailPage />} /> 쿼리 파라미터는 Route Path에 명시하지 않음 */}
-                  {/* <Route path="/login" element={<LoginPage />} /> */}
-                  {/* <Route path="/signin" element={<SignInPage />} /> */}
-                  {/* 로그인한 사용자만 접근 가능한 라우트 */}
+                  <Route index element={<HomePage />} />
+                  <Route path="/boardGame" element={<BoardGameListPage />} />
+                  <Route path="/boardGame/:id" element={<BoardGameDetailPage />} /> 쿼리 파라미터는 Route Path에 명시하지 않음
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/signin" element={<SignInPage />} />
           <Route element={<PrivateRoute />}>
-            <Route path="/my" element={<>my</>} />
-            <Route path="/cart" element={<>cart</>} />
+            <Route path="/my" element={<MyPage/>} />
+            <Route path="/cart" element={<CartPage/>} />
           </Route>
         </Route>
         
-
-
-
-        {/* 관리자만 접근 가능한 라우트 */}
         <Route path="/admin" element={<AdminRoute />}>
           <Route element={<AdminLayout />}>
             <Route index element={<>123</>} />
-                        {/* <Route index element={<AdminDashboardPage />} />
-            <Route path="boardgames" element={<AdminBoardgameManagePage />} />
-            <Route path="users" element={<AdminUserManagePage />} /> */}
+                        <Route index element={<AdminOrderPage />} />
+            <Route path="boardgames" element={<AdminBoardGamePage />} />
+            <Route path="users" element={<AdminUserPage />} />
           </Route>
         </Route>
 
-        {/* 404 Not Found 페이지 */}
-        <Route path="*" element={<div>404 Not Found</div>} />
+        <Route path="*" element={<NotFoundPage/>} />
       </Routes>
     </BrowserRouter>
   );
